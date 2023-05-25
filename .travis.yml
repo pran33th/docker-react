@@ -2,6 +2,6 @@ sudo: required
 services: 
   - docker
 before_install:
-  - docker build -t praneeth/docker-react -f Dockerfile.dev
+  - docker build -t praneeth/docker-react -f Dockerfile.dev .
 scripts:
   - docker run -e CI=true praneeth/docker-react npm run tests
