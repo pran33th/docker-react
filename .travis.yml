@@ -4,4 +4,13 @@ services:
 before_install:
   - docker build -t praneeth/docker-react -f Dockerfile.dev .
 scripts:
-  - docker run -e CI=true praneeth/docker-react npm run test
+  - docker run -e CI=true praneeth/docker-react npm run test  
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-north-1"
+  app: "Docker-React"
+  env: "Docker-React-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-542701547676"
+  bucker_path: "Docker-React"
+  on:
+    branch: main
